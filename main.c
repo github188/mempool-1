@@ -6,17 +6,17 @@ using std::endl;
 
 int main(void)
 {
-    ///´´½¨Ïß³Ì³ØµÄ´æ·ÅµÄ»ù±¾µ¥ÔªµÄÊı¾İ½á¹¹
+    ///ç”³æ˜å†…å­˜æ± çš„å­˜æ”¾çš„åŸºæœ¬å•å…ƒçš„æ•°æ®ç»“æ„
     struct telnetd_line {
         int fd;
        char line[1024];
     };
 
-    ///³õÊ¼»¯Ïß³Ì³Ø
+    ///åˆå§‹åŒ–å†…å­˜æ± 
     MEMB_POOL_INIT(linemem, struct telnetd_line, 50);
     memb_init(&linemem);
 
-    ///ÉêÇë¿Õ¼ä
+    ///ç”³è¯·ç©ºé—´
     struct telnetd_line *a=(struct telnetd_line *)memb_alloc(&linemem);
     cout<<a<<endl;
     if(a!= NULL)
@@ -25,7 +25,7 @@ int main(void)
       cout<<a->line<<endl;
     memb_free(&linemem,a);
 
-    ///ÉêÇëÒ»¸ö¿Õ¼ä
+    ///ç”³è¯·ä¸€ä¸ªç©ºé—´
     struct telnetd_line *b=(struct telnetd_line *)memb_alloc(&linemem);
       cout<<b<<endl;
     if(b!= NULL)
@@ -34,7 +34,7 @@ int main(void)
       cout<<b->line<<endl;
     memb_free(&linemem,b);
 
-    ///Ïú»ÙÏß³Ì³Ø
+    ///é”€æ¯å†…å­˜æ± 
     MEMB_POOL_DESTROY(linemem, struct telnetd_line);
 
 
